@@ -1,4 +1,4 @@
-# LaNoire-
+# La Noire
 Bit-perfect audio player with DSD upsampling — built with Tauri + Rust
 
 
