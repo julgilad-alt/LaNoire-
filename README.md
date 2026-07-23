@@ -43,19 +43,24 @@
 ## Features
 
 **Formats**
-FLAC · WAV · ALAC · AIFF · MP3 · AAC · M4A · OGG · WavPack · DSF/DFF (ASIO Native + DoP) · CUE sheets · gapless
+FLAC · WAV · ALAC · AIFF · MP3 · AAC · M4A · OGG · WavPack · DSF/DFF (ASIO Native + DoP) · CUE sheets · gapless.
+
 **Audio engine**
 ASIO native / WASAPI exclusive / DAC capability/stability probing.
+
 **DSP**
 - FIR convolution (up to 10M taps, experimental) — GPU-accelerated via OpenCL (AMD / NVIDIA / Intel)
 - SoXR VHQ resampling
 - PCM → DSD real-time upsampling (DSD64 → DSD256+), 5th-order Σ-Δ modulator with Hermite interpolation + look-ahead trellis
 - VST3 plugin chain (JUCE host)
-- ReplayGain (track/album, configurable preamp)
+- ReplayGain (track/album, configurable preamp).
+
 **Analysis**
-Real-time spectrum analyzer · goniometer · True Peak / LUFS meters · test signal generator (sine, impulse, multitone, noise)
+Real-time spectrum analyzer · goniometer · True Peak / LUFS meters · test signal generator (sine, impulse, multitone, noise).
+
 **Library**
-Drag & drop playlists · smart filters · radio streaming (HTTP/ICY, M3U/PLS)
+Drag & drop playlists · smart filters · radio streaming (HTTP/ICY, M3U/PLS).
+
 **Metadata**
-Discogs · Last.fm · Groq AI summaries (albums/artists)
----
+Discogs · Last.fm · Groq AI summaries (albums/artists).
+
