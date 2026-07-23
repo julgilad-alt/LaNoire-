@@ -1,16 +1,6 @@
 # La Noire
 
-> Bit-perfect audio player with DSD upsampling — built with Tauri + Rust
-
----
-
-## What it does
-
-LaNoire plays your music the way it was recorded# La Noire — Audio Engine (Beta)
-
-La Noire is a high-performance audio player and DSP engine focused on bit-perfect playback, low-level ASIO control, and high-precision digital signal processing.
-
-This is a **technical beta** for advanced users and developers.
+> Audio player Windows 64bits
 
 ---
 
@@ -19,7 +9,6 @@ This is a **technical beta** for advanced users and developers.
 - Beta software
 - Expect hardware-specific issues
 - Not plug-and-play
-- Feedback and logs are essential
 
 ---
 
