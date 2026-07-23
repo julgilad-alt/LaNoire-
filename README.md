@@ -19,22 +19,22 @@
 ## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/now-playing.jpg" width="800" alt="Now Playing view"><br>
+  <img src="now-playing.jpg" width="800" alt="Now Playing view"><br>
   <sub>Now Playing — tracklist, system telemetry, audio chain status</sub>
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/library.jpg" width="800" alt="Library view"><br>
+  <img src="library.jpg" width="800" alt="Library view"><br>
   <sub>Library — filters by decade, format, rating</sub>
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/artist-discography.jpg" width="800" alt="Artist discography view"><br>
+  <img src="artist-discography.jpg" width="800" alt="Artist discography view"><br>
   <sub>Artist page — local + Discogs discography</sub>
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/audio-chain.jpg" width="800" alt="Audio chain view"><br>
+  <img src="audio-chain.jpg" width="800" alt="Audio chain view"><br>
   <sub>Audio chain — signal path from source to output</sub>
 </p>
 
