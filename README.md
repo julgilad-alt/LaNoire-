@@ -1,152 +1,55 @@
-# La Noire
+La Noire
 
-> Audio player Windows 64bits
+Bit-perfect audio player for Windows 64-bit — no mixer, no resampling artifacts, no compromises.
 
----
+Beta software. Expect hardware-specific issues, especially on DACs. Not plug-and-play.
 
-# Status
+Features
 
-- Beta software
-- Expect hardware-specific issues
-- Not plug-and-play
+Playback — FLAC, WAV, ALAC, AIFF, MP3, AAC, M4A, OGG, WavPack, DSF/DFF (ASIO Native + DoP), CUE sheets, gapless.
 
----
+Audio engine — ASIO native (Steinberg SDK) with WASAPI exclusive fallback, bit-perfect output, DAC capability/stability probing.
 
-# Core Features
+DSP
 
-## Playback
-- PCM: FLAC, ALAC, WAV, AIFF, MP3, OGG
-- DSD: DFF, DSF (ASIO Native + DoP)
-- WavPack support
-- CUE sheets
-- Gapless playback
+FIR convolution (up to 10M taps, experimental) — GPU-accelerated via OpenCL (OLS convolution, AMD/NVIDIA/Intel)
+SoXR VHQ resampling
+PCM → DSD real-time upsampling (DSD64 to DSD256+), 5th-order Σ-Δ modulator with Hermite interpolation + look-ahead trellis
+VST3 plugin chain (JUCE host)
+ReplayGain (track/album, configurable preamp)
 
-## Audio Engine
-- ASIO native (Steinberg SDK)
-- WASAPI exclusive fallback
-- Bit-perfect output
-- DAC probing (capabilities + stability)
+Analysis — real-time spectrum analyzer, goniometer, True Peak/LUFS meters, test signal generator (sine, impulse, multitone, noise).
 
-## DSP
-- FIR convolution (up to 10M taps experimental)
-- Linear / minimum phase filters
-- Apodizing filters
-- SoXR resampling
-- Sigma-Delta modulation (order 5)
-- DSD upsampling up to DSD256+
+Library — drag & drop playlists, smart filters, radio streaming (HTTP/ICY, M3U/PLS).
 
-## GPU
-- OpenCL DSP acceleration
-- NVIDIA / AMD support (tested)
+Metadata — Discogs, Last.fm, Groq AI summaries (albums/artists).
 
-## Analysis
-- Spectrum analyzer (real-time)
-- Goniometer
-- True Peak / LUFS meters
-- Test signals (sine, impulse, multitone, noise)
+Stack
+Layer	Technology
+UI	Tauri + Vue.js
+Audio engine	Rust (cpal, symphonia, ringbuf)
+DSP / VST	JUCE (C++ DLL via FFI)
+Resampling	SoXR (C++ → Rust FFI)
+GPU FIR	OpenCL 1.2+
+DSD modulator	Pure Rust Σ-Δ V2.3
+Requirements
+Windows 10/11 64-bit
+ASIO driver recommended for DSD output
+OpenCL GPU for FIR filtering (optional, bypassed if unavailable)
+DoP-capable DAC for DSD playback
+Build
 
-## Library
-- Drag & drop playlists
-- ReplayGain scanning
-- Smart filters
-- Radio streaming
+Requires: Rust toolchain, C++ compiler + ASIO SDK, OpenCL runtime.
 
-## Metadata
-- Discogs integration
-- Last.fm integration
-- Groq AI summaries (albums / artists)
+(Platform-specific instructions: TODO)
 
----
+Bug reports
 
-# Architecture
+Please include: DAC model, driver (ASIO/WASAPI) + version, OS version, playback mode (PCM/DSD/DoP), sample rate/DSD rate, buffer size, expected vs actual behavior, and logs (ASIO + DSP if available).
 
-- Rust (core engine + UI via Tauri)
-- C++ (ASIO engine + JUCE host for VST)
-- OpenCL (GPU DSP layer)
+Known limitations
 
----
-
-# DAC Testing
-
-La Noire performs DAC probing for:
-- Supported PCM rates
-- Native DSD / DoP modes
-- Buffer stability
-- Driver behavior
-
-Results may vary depending on driver implementation.
-
----
-
-# Bug Reports
-
-Please include:
-
-- DAC model
-- Driver (ASIO / WASAPI) + version
-- OS version
-- Playback mode (PCM / DSD / DoP)
-- Sample rate / DSD rate
-- Buffer size
-- Expected vs actual behavior
-- Logs (ASIO + DSP if available)
-
----
-
-# Limitations
-
-- DAC behavior varies significantly between manufacturers
-- High-tap FIR modes are experimental
-- GPU acceleration depends on driver support
-
----
-
-# Build
-
-(TODO: platform-specific build instructions)
-
-Requires:
-- Rust toolchain
-- C++ compiler + ASIO SDK
-- OpenCL runtime No Windows mixer, no resampling artifacts, no compromises.
-
-- **DSD native playback** — DSF files over DoP, straight to your DAC
-- **PCM → DSD upsampling** — converts FLAC/WAV/MP3 to DSD64/128/256/512 in real time
-- **GPU-accelerated FIR filtering** — OpenCL OLS convolution engine, up to 10M taps
-- **SoXR resampling** — VHQ sample rate conversion before the DSD modulator
-- **5th-order Σ-Δ modulator** — Hermite cubic interpolation + look-ahead trellis (depth 3)
-- **VST plugin chain** — JUCE-powered VST3 processing before the DSD stage
-- **ASIO + WASAPI** — bit-perfect on ASIO, F32 on WASAPI shared
-- **ReplayGain** — track/album normalization with configurable preamp
-- **Radio streaming** — HTTP/ICY with metadata, M3U/PLS support
-
----
-
-## Stack
-
-| Layer | Technology |
-|---|---|
-| UI | Tauri + Vue.js |
-| Audio engine | Rust (cpal, symphonia, ringbuf) |
-| DSP / VST | JUCE (C++ DLL via FFI) |
-| Resampling | SoXR (C++ → Rust FFI) |
-| GPU FIR | OpenCL 1.2+ (AMD / NVIDIA / Intel) |
-| DSD modulator | Pure Rust Σ-Δ V2.3 |
-
----
-
-## Supported formats
-
-`FLAC` `WAV` `MP3` `AAC` `M4A` `OGG` `DSF`
-
----
-
-## Requirements
-
-- Windows 10/11 64-bit
-- ASIO driver recommended for DSD output
-- OpenCL GPU for FIR filtering (optional — bypassed if unavailable)
-- DAC with DoP support for DSD playback
+DAC behavior varies significantly between manufacturers. High-tap FIR modes are experimental. GPU acceleration depends on driver support.
 
 ---
 
